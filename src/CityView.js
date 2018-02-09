@@ -25,8 +25,11 @@ class CityView extends Component {
 
     const cityToDisplay = this.props.locations.find((location) => (location.nameInURL === this.props.match.params.name))
 
+    console.log(cityToDisplay)
+
     return (
       <div className='cityView card' style={{ width: '700px' }}>
+        {cityToDisplay ? (
         <div className='row'>
           <div className="cityView" style={{ width: '100%' }}>
             <h1>{this.props.weatherLoadingStatus === "success" && this.props.weatherDataOnView && this.props.weatherDataOnView.name}</h1>
@@ -42,6 +45,8 @@ class CityView extends Component {
           </div>
           </div>
         </div>
+        ):
+        <div>Crap Screen. No city found.</div>}
       </div>
     )
   }
