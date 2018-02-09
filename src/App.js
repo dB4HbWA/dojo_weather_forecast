@@ -35,7 +35,7 @@ const ButtonGroup = props => (
       <NmTab exact={true} to={"/washington"} tabName="Washington DC" />
       <NmTab exact={true} to={"/chicago"} tabName="Chicago IL" />
       <NmTab exact={true} to={"/tulsa"} tabName="Tulsa OK" />
-      
+      {/* {props.locations.map((locations) => <NmTab exact={true} to={location.nameInURL} tabName={location.nameInURL}  /> )} */}
     </ul>
   </nav>
 )
