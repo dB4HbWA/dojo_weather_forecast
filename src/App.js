@@ -48,7 +48,7 @@ class App extends Component {
           <ButtonGroup />
           <Switch>
             <Route exact path="/" component={HomeView} />
-            <Route path="/:name" component={CityView} />
+            <Route path="/:name" render={ ({match}) => <CityView match={match}/>}/>
         </Switch>
         </div>
       </Router>

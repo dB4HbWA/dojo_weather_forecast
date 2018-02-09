@@ -6,8 +6,11 @@ class CityView extends Component {
 
   
 
-  componentWillMount() {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match === nextProps.match) return
     const cityToDisplay = this.props.locations.find((location) => (location.nameInURL === this.props.match.params.name))
+    console.log(cityToDisplay);
+
     if (cityToDisplay)
       this.props.loadWeatherToCityView(cityToDisplay.id)
   }
