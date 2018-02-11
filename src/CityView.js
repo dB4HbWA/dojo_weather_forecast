@@ -15,7 +15,6 @@ class CityView extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match === nextProps.match) return
     const cityToDisplay = this.props.locations.find((location) => (location.nameInURL === nextProps.match.params.name))
-    console.log(cityToDisplay);
 
     if (cityToDisplay)
       nextProps.loadWeatherToCityView(cityToDisplay.id)
@@ -24,8 +23,6 @@ class CityView extends Component {
   render() {
 
     const cityToDisplay = this.props.locations.find((location) => (location.nameInURL === this.props.match.params.name))
-
-    console.log(cityToDisplay)
 
     return (
       <div className='cityView card' style={{ width: '700px' }}>
