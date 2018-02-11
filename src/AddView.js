@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { addANewCity } from './state/action';
+import { connect } from "react-redux";
+
 class AddView extends Component {
     constructor(props) {
         super(props)
@@ -9,7 +12,7 @@ class AddView extends Component {
     }
 
     handleChangingCityText(event) {
-        this.setState({cityText: event.target.value})
+        this.setState({ cityText: event.target.value })
     }
 
     render() {
@@ -24,7 +27,7 @@ class AddView extends Component {
                         <input onChange={this.handleChangingCityText} type="text" placeholder="Enter a city" />
                     </div>
                     <div className="small-3 medium-3 large-3 columns">
-                        <button>Add a City</button>
+                        <button onClick={() => this.props.addCity(this.state.cityText)} >Add a City</button>
                     </div>
                     <div className="small-2 medium-2 large-2 columns">&nbsp;</div>
                 </div>
@@ -35,4 +38,18 @@ class AddView extends Component {
     }
 }
 
-export default AddView
+const mapStateToProps = state => {
+    return {
+        addingCityStatus: state.addingCityStatus
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addCity: (cityName) => dispatch(
+            addANewCity(cityName)
+        )
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddView);

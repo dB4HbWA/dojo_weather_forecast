@@ -30,7 +30,6 @@ function addANewCity(cityName) {
         const promise = axios.get(api + "q=" + cityName + '&&appid=' + localStorage.getItem('apiKey'));
 
         promise.then(({ data: weatherData }) => {
-
             const newCity = { id: weatherData.id, nameInURL: weatherData.name.toLowerCase().trim(), imageURL: "https://images.pexels.com/photos/221148/pexels-photo-221148.jpeg?h=350&auto=compress&cs=tinysrgb", fahrenheit: true }
             dispatch({ type: ADD_CITY, payload: newCity })
         }, () => { })
@@ -40,4 +39,4 @@ function addANewCity(cityName) {
     }
 }
 
-export { loadWeather }
+export { loadWeather, addANewCity }

@@ -10,6 +10,7 @@ import {
 import CityView from './CityView'
 import HomeView from './HomeView'
 import AddView from './AddView'
+import { connect } from "react-redux";
 
 const NmTab = (props) => {
   return (
@@ -28,17 +29,26 @@ const ButtonGroup = props => (
   <nav className='NavBar'>
     <ul className="tabs">
       {/* calling NmTab to generate the Route, circumvents NM styling and Anchor tags */}
-      <NmTab exact={true} to={"/seattle"} tabName="Seattle WA" />
+      {/* <NmTab exact={true} to={"/seattle"} tabName="Seattle WA" />
       <NmTab exact={true} to={"/sanjose"} tabName="San Jose CA" />
       <NmTab exact={true} to={"/burbank"} tabName="Burbank CA" />
       <NmTab exact={true} to={"/dallas"} tabName="Dallas TX" />
       <NmTab exact={true} to={"/washington"} tabName="Washington DC" />
       <NmTab exact={true} to={"/chicago"} tabName="Chicago IL" />
-      <NmTab exact={true} to={"/tulsa"} tabName="Tulsa OK" />
-      {/* {props.locations.map((locations) => <NmTab exact={true} to={location.nameInURL} tabName={location.nameInURL}  /> )} */}
+      <NmTab exact={true} to={"/tulsa"} tabName="Tulsa OK" /> */}
+      {props.locations.map((location) => <NmTab key={location.id} exact={true} to={location.nameInURL} tabName={location.nameInURL}  /> )}
     </ul>
   </nav>
 )
+
+const mapStateToProps = state => {
+  return {
+      locations: state.locations
+  };
+};
+
+const ButtonGroupWrapped = connect(mapStateToProps)(ButtonGroup);
+
 
 class App extends Component {
   render() {
@@ -47,7 +57,7 @@ class App extends Component {
         <div className="App">
         <h3>Dojo Weather Forecast</h3>
         <Route><Link to={"/add"}>Add a Weather Forecast</Link></Route>
-          <ButtonGroup />
+          <ButtonGroupWrapped />
           <Switch>
             <Route exact path="/" component={HomeView} />
             <Route exact path="/add" component={AddView} />
