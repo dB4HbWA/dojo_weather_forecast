@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 import CityView from './CityView'
 import HomeView from './HomeView'
+import AddView from './AddView'
 
 const NmTab = (props) => {
   return (
@@ -25,7 +26,6 @@ const NmTab = (props) => {
 
 const ButtonGroup = props => (
   <nav className='NavBar'>
-  <h3 align='left'>Dojo Weather Forecast</h3>
     <ul className="tabs">
       {/* calling NmTab to generate the Route, circumvents NM styling and Anchor tags */}
       <NmTab exact={true} to={"/seattle"} tabName="Seattle WA" />
@@ -45,9 +45,12 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+        <h3>Dojo Weather Forecast</h3>
+        <Route><Link to={"/add"}>Add a Weather Forecast</Link></Route>
           <ButtonGroup />
           <Switch>
             <Route exact path="/" component={HomeView} />
+            <Route exact path="/add" component={AddView} />
             <Route path="/:name" render={ ({match}) => <CityView match={match}/>}/>
         </Switch>
         </div>
