@@ -1,5 +1,6 @@
 .App {
   padding: 30px;
+  width: 700px;
 }
 .NavBar {
   padding-bottom: 30px;
@@ -26,4 +27,9 @@ text-align: center;
 }
 .addHeader {
   padding-bottom: 50px;
+}
+
+.invalidCity {
+  color: red;
+  padding-bottom: 20px;
 }

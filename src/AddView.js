@@ -21,13 +21,14 @@ class AddView extends Component {
                 <div className="addHeader">
                     <h1>Add a City</h1>
                 </div>
+                {this.props.addingCityStatus === "failed" && <div className="invalidCity">Not a valid city name.</div>}
                 <div className="row">
                     <div className="small-1 medium-1 large-1 columns">&nbsp;</div>
                     <div className="small-6 medium-6 large-6 columns">
                         <input onChange={this.handleChangingCityText} type="text" placeholder="Enter a city" />
                     </div>
                     <div className="small-3 medium-3 large-3 columns">
-                        <button onClick={() => this.props.addCity(this.state.cityText)} >Add a City</button>
+                        <button onClick={() => this.props.addCity(this.state.cityText)}>Add a City</button>
                     </div>
                     <div className="small-2 medium-2 large-2 columns">&nbsp;</div>
                 </div>
