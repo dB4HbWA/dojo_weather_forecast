@@ -22,11 +22,8 @@
 }
 
 .addView {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+text-align: center;
 }
-
-.addCityInput {
-
+.addHeader {
+  padding-bottom: 50px;
 }
